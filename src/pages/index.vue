@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import Info from "../komponen/info.vue"
+</script>
+
 <template>
-  <p>Hello world</p>
+	<Info/>
 </template>
