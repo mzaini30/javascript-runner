@@ -19,7 +19,7 @@ export default defineConfig({
     unocss({
       transformers: [apply()],
     }),
-    legacy(),
+    // legacy(),
     vue({
       include: [/\.vue$/, /\.md$/], // <--
     }),
