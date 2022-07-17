@@ -3,7 +3,6 @@
 Aplikasi Android JavaScript Runner
 
 <!-- blog start -->
-
 ## Blog
 
 - [Script Golang untuk Ngecek Error](https://github.zenia.my.id/tulisan/error)
