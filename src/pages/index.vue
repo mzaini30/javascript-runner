@@ -47,7 +47,8 @@ function run(): void {
       ${konten}
     }
     init_${acak}()`;
-    window.eval(konten);
+    // @ts-ignore
+    panggil5140(konten)
   }
 }
 </script>
