@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="icon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.16403309"
+     inkscape:cx="-597.44043"
+     inkscape:cy="746.80054"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1330"
+     inkscape:window-height="743"
+     inkscape:window-x="36"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#b8e2f4;fill-opacity:1;stroke-width:0.264583"
+       id="rect815"
+       width="339.42264"
+       height="339.42264"
+       x="-325.61566"
+       y="-14.452381"
+       inkscape:export-xdpi="74.832954"
+       inkscape:export-ydpi="74.832954"
+       inkscape:export-filename="/home/zen/aplikasi-android/javascript-runner/tambahan/icon.png" />
+    <path
+       fill="currentColor"
+       d="m -149.49252,151.75293 -6.92496,-6.92752 a 8.487055,8.487055 0 0 0 -11.97196,-0.0321 l -48.14558,44.43234 c -1.75301,1.65245 -2.90409,3.75831 -3.01027,6.11597 a 8.5162293,8.5162293 0 0 0 2.44267,6.3495 l 10.34373,10.4576 a 0.1220014,0.1220014 0 0 0 0.016,0.016 8.5639689,8.5639689 0 0 0 6.01781,2.49832 h 0.31275 c 2.35783,-0.0802 4.46898,-1.19327 6.14517,-2.96248 l 44.74268,-47.92537 a 8.487055,8.487055 0 0 0 0.0321,-12.02505 z m 55.653852,-14.00099 -0.0802,-0.0802 -9.089032,-8.99617 a 5.6916313,5.6916313 0 0 0 -4.05262,-1.66031 5.805676,5.805676 0 0 0 -3.39215,1.09864 c 0,-0.11227 0.0159,-0.22614 0.016,-0.32397 0.11227,-1.72383 0.30473,-4.32832 -1.37931,-6.68887 a 68.42688,68.42688 0 0 0 -6.57756,-7.62231 0.1591322,0.1591322 0 0 0 -0.016,-0.016 c -3.53265,-3.47956 -11.22152,-10.03323 -22.99989,-14.836441 a 37.011517,37.011517 0 0 0 -14.07798,-2.771463 c -8.37035,0 -14.73556,3.776753 -17.17294,6.015094 a 31.805239,31.805239 0 0 0 -3.76087,4.30201 4.2435274,4.2435274 0 0 0 4.94644,6.45535 19.745663,19.745663 0 0 1 2.27555,-0.69768 16.83089,16.83089 0 0 1 4.89335,-0.30473 c 3.49817,0.2887 7.63562,2.02615 9.46562,3.4717 3.10314,2.49576 4.59632,5.85872 4.843,10.89786 0.0481,1.01364 -2.04748,4.81108 -5.30443,9.14485 a 4.2435274,4.2435274 0 0 0 0.38493,5.56954 l 9.12624,9.12624 a 4.2435274,4.2435274 0 0 0 5.83482,0.1652 c 2.5806,-2.3049 6.51116,-5.77916 7.88502,-6.63065 2.03946,-1.25421 3.49816,-1.49639 3.89865,-1.53809 a 5.0869286,5.0869286 0 0 1 2.99439,0.63192 0.32887341,0.32887341 0 0 1 -0.0802,0.2518 l -0.48276,0.4587 -0.0802,0.0802 a 5.7075444,5.7075444 0 0 0 0.0133,8.09978 l 9.08646,8.99361 a 5.688979,5.688979 0 0 0 4.05262,1.65774 5.7552842,5.7552842 0 0 0 4.03658,-1.64443 l 14.719842,-14.53941 c 0.0481,-0.0481 0.0962,-0.0962 0.14434,-0.16038 a 5.8003716,5.8003716 0 0 0 -0.0802,-7.89834 z"
+       id="path824-3"
+       style="stroke-width:0.265221;fill:#235284;fill-opacity:1"
+       inkscape:export-filename="/home/zen/aplikasi-android/javascript-runner/tambahan/icon.png"
+       inkscape:export-xdpi="74.832954"
+       inkscape:export-ydpi="74.832954" />
+  </g>
+</svg>
