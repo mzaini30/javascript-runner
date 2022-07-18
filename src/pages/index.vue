@@ -41,7 +41,7 @@ function run(): void {
   const elemen = document.querySelector(".cm-content");
   if (elemen) {
     let konten = (elemen as HTMLElement).innerText;
-    konten = konten.replace(/(alert\()(.*)(\))/g, "await swal($2)");
+    konten = konten.replace(/(alert\()(.*)(\))/g, "await swal(($2).toString())");
     const acak = Math.random().toString().replace("0.", "");
     konten = `async function init_${acak}(){
       ${konten}
