@@ -11,6 +11,9 @@ if (localStorage[`kode_${props.id}`]) {
 }
 
 onMounted(() => {
+  // const { EditorView, basicSetup } = await import("codemirror");
+  // const { javascript } = await import("@codemirror/lang-javascript");
+
   const elEditor = document.querySelector(".editor");
   if (elEditor) {
     let editor = new EditorView({

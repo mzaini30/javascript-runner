@@ -7,9 +7,9 @@ import Tombol from "../komponen/tombol.vue";
 import Grid from "../layouts/grid.vue";
 // @ts-ignore
 // import prettier from "prettier";
-import prettier from "../lib/standalone.mjs";
+// import prettier from "../lib/standalone.mjs";
 // @ts-ignore
-import parserBabel from "../lib/parser-babel.mjs";
+// import parserBabel from "../lib/parser-babel.mjs";
 import { useRoute, useRouter } from "vue-router";
 import Swal from "sweetalert2";
 
@@ -17,14 +17,19 @@ const { params } = useRoute();
 const { replace } = useRouter();
 const { parse, stringify } = JSON;
 
-function save(): void {
+function save() {
+  // const { EditorView, basicSetup } = await import("codemirror");
+  // const { javascript } = await import("@codemirror/lang-javascript")
+
   const elemen: HTMLElement | null = document.querySelector(".cm-content");
   if (elemen) {
     localStorage[`kode_${params.id}`] = elemen.innerText;
 
+    // @ts-ignore
     const diformat = prettier.format(elemen.innerText, {
       parser: "babel",
-      plugins: [parserBabel],
+      // @ts-ignore
+      plugins: prettierPlugins,
     });
 
     const elEditor = document.querySelector(".editor");

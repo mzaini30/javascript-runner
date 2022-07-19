@@ -14,12 +14,23 @@ const hostname = "http://localhost:3000/";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          codemirror: ["codemirror"],
+          codemirrorPlugin: ["@codemirror/lang-javascript"],
+          vueRouter: ["vue-router"],
+        },
+      },
+    },
+  },
   plugins: [
     yaml(),
     unocss({
       transformers: [apply()],
     }),
-    // legacy(),
+    legacy(),
     vue({
       include: [/\.vue$/, /\.md$/], // <--
     }),
