@@ -10,6 +10,9 @@ import Grid from "../layouts/grid.vue";
 import prettier from "../lib/standalone.mjs";
 // @ts-ignore
 import parserBabel from "../lib/parser-babel.mjs";
+import {useRoute} from 'vue-router'
+
+const {params} = useRoute()
 
 function save(): void {
   const elemen = document.querySelector(".cm-content");
@@ -29,7 +32,7 @@ function save(): void {
       });
     }
 
-    localStorage.isi = diformat;
+    localStorage[`kode_${params.id}`] = diformat;
     // @ts-ignore
     swal("Saved");
     // location.reload();
@@ -41,14 +44,17 @@ function run(): void {
   const elemen = document.querySelector(".cm-content");
   if (elemen) {
     let konten = (elemen as HTMLElement).innerText;
-    konten = konten.replace(/(alert\()(.*)(\))/g, "await swal(($2).toString())");
+    konten = konten.replace(
+      /(alert\()(.*)(\))/g,
+      "await swal(($2).toString())"
+    );
     const acak = Math.random().toString().replace("0.", "");
     konten = `async function init_${acak}(){
       ${konten}
     }
     init_${acak}()`;
     // @ts-ignore
-    panggil5140(konten)
+    panggil5140(konten);
   }
 }
 </script>
@@ -60,6 +66,7 @@ function run(): void {
   </div>
   <Grid>
     <Tombol @klik="save">save</Tombol>
+    <Tombol @klik="">delete</Tombol>
     <Tombol @klik="run">run</Tombol>
   </Grid>
 </template>

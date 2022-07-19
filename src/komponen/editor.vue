@@ -3,6 +3,8 @@ import { EditorView, basicSetup } from "codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { onMounted, onUpdated, ref } from "vue";
 
+defineProps(["id"]);
+
 let isi = "";
 if (localStorage.isi) {
   isi = localStorage.isi;
