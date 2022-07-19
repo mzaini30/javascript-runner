@@ -63,7 +63,15 @@ function run(): void {
     }
     init_${acak}()`;
     // @ts-ignore
-    panggil5140(konten);
+    // panggil5140(konten);
+
+    let script = document.createElement("script");
+    script.innerHTML = konten;
+    let elScript: HTMLElement | null = document.querySelector(".script");
+    if (elScript) {
+      elScript.innerHTML = "";
+      elScript.appendChild(script);
+    }
   }
 }
 
