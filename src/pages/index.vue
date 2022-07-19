@@ -1,65 +1,25 @@
 <script setup lang="ts">
-import { EditorView, basicSetup } from "codemirror";
-import { javascript } from "@codemirror/lang-javascript";
 import Info from "../komponen/info.vue";
-import Editor from "../komponen/editor.vue";
+import Container from "../layouts/container.vue";
 import Tombol from "../komponen/tombol.vue";
-import Grid from "../layouts/grid.vue";
-// @ts-ignore
-// import prettier from "prettier";
-import prettier from "../lib/standalone.mjs";
-// @ts-ignore
-import parserBabel from "../lib/parser-babel.mjs";
+import { ref } from "vue";
 
-function save(): void {
-  const elemen = document.querySelector(".cm-content");
-  if (elemen) {
-    const diformat = prettier.format((elemen as HTMLElement).innerText, {
-      parser: "babel",
-      plugins: [parserBabel],
-    });
-
-    const elEditor = document.querySelector(".editor");
-    if (elEditor) {
-      elEditor.innerHTML = "";
-      let editor = new EditorView({
-        doc: diformat,
-        extensions: [basicSetup, javascript()],
-        parent: elEditor,
-      });
-    }
-
-    localStorage.isi = diformat;
-    // @ts-ignore
-    swal("Saved");
-    // location.reload();
-  }
-}
-
-function run(): void {
-  save();
-  const elemen = document.querySelector(".cm-content");
-  if (elemen) {
-    let konten = (elemen as HTMLElement).innerText;
-    konten = konten.replace(/(alert\()(.*)(\))/g, "await swal(($2).toString())");
-    const acak = Math.random().toString().replace("0.", "");
-    konten = `async function init_${acak}(){
-      ${konten}
-    }
-    init_${acak}()`;
-    // @ts-ignore
-    panggil5140(konten)
-  }
-}
+const elTambah = ref(false);
 </script>
 
 <template>
-  <div class="mb-50px">
-    <Info />
-    <Editor></Editor>
-  </div>
-  <Grid>
-    <Tombol @klik="save">save</Tombol>
-    <Tombol @klik="run">run</Tombol>
-  </Grid>
+  <Info></Info>
+  <Container>
+    <Tombol class="!bg-black text-white" @klik="elTambah = !elTambah"
+      >add</Tombol
+    >
+    <div class="mt-3 border border-slate-300 p-2 rounded" v-if="elTambah">
+      <input
+        type="text"
+        placeholder="Write here"
+        class="focus:outline-none text-sm border border-slate-300 rounded px-2 py-1 block w-full mb-3"
+      />
+      <Tombol class="block">submit</Tombol>
+    </div>
+  </Container>
 </template>
