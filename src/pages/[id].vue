@@ -5,6 +5,7 @@ import { javascript } from "@codemirror/lang-javascript";
 import Editor from "../komponen/editor.vue";
 import Tombol from "../komponen/tombol.vue";
 import Grid from "../layouts/grid.vue";
+import { onMounted, onUnmounted } from "vue";
 // @ts-ignore
 // import prettier from "prettier";
 // import prettier from "../lib/standalone.mjs";
@@ -17,13 +18,25 @@ const { params } = useRoute();
 const { replace } = useRouter();
 const { parse, stringify } = JSON;
 
+let selaluSimpan: number;
+onMounted(
+  () =>
+    (selaluSimpan = setInterval(() => {
+      const elemen: HTMLElement | null = document.querySelector(".cm-content");
+      if (elemen) {
+        localStorage[`kode_${params.id}`] = elemen.innerText;
+      }
+    }, 5000))
+);
+onUnmounted(() => clearInterval(selaluSimpan));
+
 function save() {
   // const { EditorView, basicSetup } = await import("codemirror");
   // const { javascript } = await import("@codemirror/lang-javascript")
 
   const elemen: HTMLElement | null = document.querySelector(".cm-content");
   if (elemen) {
-    localStorage[`kode_${params.id}`] = elemen.innerText;
+    // localStorage[`kode_${params.id}`] = elemen.innerText;
 
     // @ts-ignore
     const diformat = prettier.format(elemen.innerText, {
@@ -48,10 +61,10 @@ function save() {
   }
 }
 
-function simpan() {
-  save();
-  Swal.fire("Saved");
-}
+// function simpan() {
+//   save();
+//   Swal.fire("Saved");
+// }
 
 function run(): void {
   save();
@@ -99,7 +112,7 @@ async function hapus() {
     <Editor :id="params.id"></Editor>
   </div>
   <Grid>
-    <Tombol @klik="simpan">save</Tombol>
+    <!-- <Tombol @klik="simpan">save</Tombol> -->
     <Tombol @klik="hapus">delete</Tombol>
     <Tombol @klik="run">run</Tombol>
   </Grid>
