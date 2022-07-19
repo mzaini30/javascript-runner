@@ -10,14 +10,19 @@ import Grid from "../layouts/grid.vue";
 import prettier from "../lib/standalone.mjs";
 // @ts-ignore
 import parserBabel from "../lib/parser-babel.mjs";
-import {useRoute} from 'vue-router'
+import { useRoute, useRouter } from "vue-router";
+import Swal from "sweetalert2";
 
-const {params} = useRoute()
+const { params } = useRoute();
+const { replace } = useRouter();
+const { parse, stringify } = JSON;
 
 function save(): void {
-  const elemen = document.querySelector(".cm-content");
+  const elemen: HTMLElement | null = document.querySelector(".cm-content");
   if (elemen) {
-    const diformat = prettier.format((elemen as HTMLElement).innerText, {
+    localStorage[`kode_${params.id}`] = elemen.innerText;
+
+    const diformat = prettier.format(elemen.innerText, {
       parser: "babel",
       plugins: [parserBabel],
     });
@@ -33,10 +38,14 @@ function save(): void {
     }
 
     localStorage[`kode_${params.id}`] = diformat;
-    // @ts-ignore
-    swal("Saved");
+
     // location.reload();
   }
+}
+
+function simpan() {
+  save();
+  Swal.fire("Saved");
 }
 
 function run(): void {
@@ -57,16 +66,28 @@ function run(): void {
     panggil5140(konten);
   }
 }
+
+async function hapus() {
+  const tanya = await Swal.fire("Delete?");
+  if (tanya.isConfirmed) {
+    let data = parse(localStorage.listKode);
+    data = data.filter((x: any) => x.id != params.id);
+    localStorage.listKode = stringify(data);
+
+    localStorage.removeItem(`kode_${params.id}`);
+    replace("/");
+  }
+}
 </script>
 
 <template>
   <div class="mb-50px">
     <!-- <Info /> -->
-    <Editor></Editor>
+    <Editor :id="params.id"></Editor>
   </div>
   <Grid>
-    <Tombol @klik="save">save</Tombol>
-    <Tombol @klik="">delete</Tombol>
+    <Tombol @klik="simpan">save</Tombol>
+    <Tombol @klik="hapus">delete</Tombol>
     <Tombol @klik="run">run</Tombol>
   </Grid>
 </template>

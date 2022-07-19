@@ -3,11 +3,11 @@ import { EditorView, basicSetup } from "codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { onMounted, onUpdated, ref } from "vue";
 
-defineProps(["id"]);
+const props = defineProps(["id"]);
 
 let isi = "";
-if (localStorage.isi) {
-  isi = localStorage.isi;
+if (localStorage[`kode_${props.id}`]) {
+  isi = localStorage[`kode_${props.id}`];
 }
 
 onMounted(() => {
