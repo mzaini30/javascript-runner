@@ -1,96 +1,54 @@
 <script setup lang="ts">
-import { EditorView, basicSetup } from "codemirror";
-import { javascript } from "@codemirror/lang-javascript";
-// import Info from "../komponen/info.vue";
-import Editor from "../komponen/editor.vue";
 import Tombol from "../komponen/tombol.vue";
 import Grid from "../layouts/grid.vue";
-import { onMounted, onUnmounted } from "vue";
-// @ts-ignore
-// import prettier from "prettier";
-// import prettier from "../lib/standalone.mjs";
-// @ts-ignore
-// import parserBabel from "../lib/parser-babel.mjs";
+import { onMounted, onUnmounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import Swal from "sweetalert2";
+
+const isi = ref("");
 
 const { params } = useRoute();
 const { replace } = useRouter();
 const { parse, stringify } = JSON;
 
+if (localStorage[`kode_${params.id}`]) {
+  isi.value = localStorage[`kode_${params.id}`];
+}
+
 let selaluSimpan: number;
 onMounted(
   () =>
     (selaluSimpan = setInterval(() => {
-      const elemen: HTMLElement | null = document.querySelector(".cm-content");
-      if (elemen) {
-        localStorage[`kode_${params.id}`] = elemen.innerText;
-      }
+      localStorage[`kode_${params.id}`] = isi.value;
     }, 5000))
 );
 onUnmounted(() => clearInterval(selaluSimpan));
 
-function save() {
-  // const { EditorView, basicSetup } = await import("codemirror");
-  // const { javascript } = await import("@codemirror/lang-javascript")
-
-  const elemen: HTMLElement | null = document.querySelector(".cm-content");
-  if (elemen) {
-    // localStorage[`kode_${params.id}`] = elemen.innerText;
-
-    // @ts-ignore
-    const diformat = prettier.format(elemen.innerText, {
-      parser: "babel",
-      // @ts-ignore
-      plugins: prettierPlugins,
-    });
-
-    const elEditor = document.querySelector(".editor");
-    if (elEditor) {
-      elEditor.innerHTML = "";
-      let editor = new EditorView({
-        doc: diformat,
-        extensions: [basicSetup, javascript()],
-        parent: elEditor,
-      });
-    }
-
-    localStorage[`kode_${params.id}`] = diformat;
-
-    // location.reload();
-  }
-}
-
-// function simpan() {
-//   save();
-//   Swal.fire("Saved");
-// }
-
 function run(): void {
-  save();
-  const elemen = document.querySelector(".cm-content");
-  if (elemen) {
-    let konten = (elemen as HTMLElement).innerText;
-    konten = konten.replace(
-      /(alert\()(.*)(\))/g,
-      "await swal(($2).toString())"
-    );
-    const acak = Math.random().toString().replace("0.", "");
-    konten = `async function init_${acak}(){
+  // @ts-ignore
+  const diformat = prettier.format(isi.value, {
+    parser: "babel",
+    // @ts-ignore
+    plugins: prettierPlugins,
+  });
+
+  isi.value = diformat;
+
+  localStorage[`kode_${params.id}`] = isi.value;
+
+  let konten = isi.value.replace(
+    /(alert\()(.*)(\))/g,
+    "await swal(($2).toString())"
+  );
+  const acak = Math.random().toString().replace("0.", "");
+  konten = `async function init_${acak}(){
       ${konten}
+      
     }
     init_${acak}()`;
-    // @ts-ignore
-    // panggil5140(konten);
 
-    let script = document.createElement("script");
-    script.innerHTML = konten;
-    let elScript: HTMLElement | null = document.querySelector(".script");
-    if (elScript) {
-      elScript.innerHTML = "";
-      elScript.appendChild(script);
-    }
-  }
+  // @ts-ignore
+  mantapmantapmantap(konten);
 }
 
 async function hapus() {
@@ -108,12 +66,21 @@ async function hapus() {
 
 <template>
   <div class="mb-50px">
-    <!-- <Info /> -->
-    <Editor :id="params.id"></Editor>
+    <textarea
+      class="focus:outline-none w-full p-2 whitespace-pre"
+      cols="30"
+      rows="10"
+      v-model="isi"
+    ></textarea>
   </div>
   <Grid>
-    <!-- <Tombol @klik="simpan">save</Tombol> -->
     <Tombol @klik="hapus">delete</Tombol>
     <Tombol @klik="run">run</Tombol>
   </Grid>
 </template>
+
+<style scoped="">
+textarea {
+  height: calc(100vh - 56px);
+}
+</style>

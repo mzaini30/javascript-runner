@@ -18,9 +18,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          codemirror: ["codemirror"],
-          codemirrorPlugin: ["@codemirror/lang-javascript"],
-          vueRouter: ["vue-router"],
+          // codemirror: ["codemirror"],
+          // codemirrorPlugin: ["@codemirror/lang-javascript"],
+          // vueRouter: ["vue-router"],
         },
       },
     },
